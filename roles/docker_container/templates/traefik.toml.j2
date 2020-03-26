@@ -51,10 +51,21 @@ address = ":8080"
 watch = true
 exposedbydefault = false
 
-{% if ssl_cert_email is defined %}
+{% if (ssl_cert_email is defined) and (ssl_staging == 'no') %}
 [acme]
 email = "{{ ssl_cert_email }}"
 storage = "acme.json"
+entryPoint = "https"
+onHostRule = true
+  [acme.httpChallenge]
+  entryPoint = "http"
+{% endif %}
+
+{% if (ssl_cert_email is defined) and (ssl_staging == 'yes') %}
+[acme]
+email = "{{ ssl_cert_email }}"
+storage = "acme.json"
+caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
 entryPoint = "https"
 onHostRule = true
   [acme.httpChallenge]
