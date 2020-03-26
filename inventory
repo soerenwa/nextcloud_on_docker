@@ -11,7 +11,7 @@ nextcloud_server_fqdn       = nextcloud.example.tld
 # Your email address (for Let's Encrypt).
 ssl_cert_email              = nextcloud@example.tld
 #enable staging certs (for Let's Encrypt)
-ssl_staging                 = 'yes'          #leave empty for productive. cetsonly for LetsEncrypt.
+ssl_staging                 = 'yes'          #set to 'no' for productive. certs are only for Let's Encrypt.
 
 ### Nextcloud variables ###
 
