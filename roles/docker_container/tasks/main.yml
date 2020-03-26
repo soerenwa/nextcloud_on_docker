@@ -38,9 +38,11 @@
 
 - name: docker onlyoffice
   include_tasks: onlyoffice.yml
-  when: online_office == 'onlyoffice'
-  
-- name: docker collabora office
+  when: 
+  - online_office == 'onlyoffice'
+  - ansible_architecture == 'x86_64'  
+- 
+  name: docker collabora office
   include_tasks: collabora.yml
   when: 
     - online_office == 'collabora'
