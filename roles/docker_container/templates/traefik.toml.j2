@@ -61,6 +61,11 @@ onHostRule = true
   entryPoint = "http"
 {% endif %}
 
+{% if (ssl_cert_email is defined) and (ssl_staging is defined) %}
+[acme]
+caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+{% endif %}
+
 {% if acme_provider is defined %}
 [acme.dnsChallenge]
 provider = "{{ acme_provider }}"
